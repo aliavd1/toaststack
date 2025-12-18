@@ -5,7 +5,7 @@
     animation: "slide", // slide | fade | scale | bounce
     maxVisible: Infinity,
     showDismiss: false,
-    showProgress: true,
+    showProgress: false,
     fill: false,
     theme: "light", // system | light | dark
     direction: "ltr", // rtl | ltr
