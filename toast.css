@@ -56,7 +56,6 @@
 	padding: 14px 10px;
 	position: relative;
 	overflow: hidden;
-	border-inline-start: 5px solid var(--toast-accent);
 }
 
 .toast svg {

@@ -4,6 +4,7 @@
     position: "top-center",
     animation: "slide", // slide | fade | scale | bounce
     maxVisible: Infinity,
+    border: false,
     showDismiss: false,
     showProgress: false,
     fill: false,
@@ -121,6 +122,7 @@
       ${cfg.class}
     `;
     el.style.setProperty("--toast-accent", color);
+    if (cfg.border) el.style.borderInlineStart = `5px solid ${color}`;
     el.dir = dir;
 
     el.innerHTML = `
