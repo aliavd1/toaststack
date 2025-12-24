@@ -16,7 +16,6 @@
 	padding: 12px;
 	display: flex;
 	flex-direction: column;
-	gap: 8px;
 	pointer-events: none;
 }
 
@@ -54,8 +53,10 @@
 	border-radius: var(--toast-radius);
 	box-shadow: var(--toast-shadow);
 	padding: 14px 10px;
+	margin-bottom: 8px;
 	position: relative;
 	overflow: hidden;
+	will-change: transform, opacity;
 }
 
 .toast svg {
