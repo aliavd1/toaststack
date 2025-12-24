@@ -173,22 +173,8 @@
 
       setTimeout(() => {
         const h = toast.offsetHeight;
-        const siblings = Array.from(container.children).filter(
-          (t) => t !== toast
-        );
-        const index = Array.from(container.children).indexOf(toast);
-        siblings.forEach((sibling, i) => {
-          if (i > index) {
-            sibling.style.transition = `transform ${animDuration}ms ease`;
-            if (cfg.animation !== "fade") {
-              sibling.style.transform = `translateY(-${h + 8}px)`;
-            }
-          }
-        });
-
         toast.style.transition = `all ${animDuration}ms ease`;
         toast.style.maxHeight = h + "px";
-        toast.style.overflow = "hidden";
 
         requestAnimationFrame(() => {
           toast.style.maxHeight = "0";
