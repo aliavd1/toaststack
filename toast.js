@@ -92,6 +92,7 @@
 
   function createToast(message, cfg) {
     const type = cfg.type;
+    const pos = cfg.position || "top-center";
     const color = cfg.colors[type] || colors[type];
     const icon = cfg.icons[type] || icons[type];
     const [animIn] = animations[cfg.animation];
@@ -122,6 +123,13 @@
       ${cfg.class}
     `;
     el.style.setProperty("--toast-accent", color);
+
+    if (pos.startsWith("top")) {
+      el.style.marginBottom = "8px";
+    } else if (pos.startsWith("bottom")) {
+      el.style.marginTop = "8px";
+    }
+
     if (cfg.border) el.style.borderInlineStart = `5px solid ${color}`;
     el.dir = dir;
 

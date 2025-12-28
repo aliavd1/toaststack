@@ -13,18 +13,20 @@
 .toast-container {
 	position: fixed;
 	z-index: 9999;
-	padding: 12px;
 	display: flex;
-	flex-direction: column;
 	pointer-events: none;
 }
 
 .toast-container[data-pos*="top"] {
 	top: 16px;
+	flex-direction: column-reverse;
 }
 
 .toast-container[data-pos*="bottom"] {
 	bottom: 16px;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
 }
 
 .toast-container[data-pos*="left"] {
@@ -53,7 +55,6 @@
 	border-radius: var(--toast-radius);
 	box-shadow: var(--toast-shadow);
 	padding: 14px 10px;
-	margin-bottom: 8px;
 	position: relative;
 	overflow: hidden;
 	will-change: transform, opacity;
