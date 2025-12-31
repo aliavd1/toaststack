@@ -129,8 +129,8 @@
 	height: 100%;
 	width: 100%;
 	background: currentColor;
-  margin-inline-start: var(--toast-px);
-  margin-inline-end: var(--toast-px);
+	margin-inline-start: var(--toast-px);
+	margin-inline-end: var(--toast-px);
 }
 
 /* Types */
