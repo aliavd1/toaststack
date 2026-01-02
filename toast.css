@@ -110,7 +110,6 @@
 .toast .progress {
   --toast-px: -10px;
 	position: absolute;
-	background: rgba(0, 0, 0, .1);
 	bottom: 0;
 	height: 3px;
 	width: 100%;
