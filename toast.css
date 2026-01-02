@@ -116,12 +116,14 @@
 	width: 100%;
 }
 
+.toast .progress-left,
 .toast .progress-left .bar {
-	left: 0;
+	left: 0 !important;
 }
 
+.toast .progress-right,
 .toast .progress-right .bar {
-	right: 0;
+	right: 0 !important;
 }
 
 .toast .progress .bar {
