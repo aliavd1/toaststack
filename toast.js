@@ -159,6 +159,7 @@
   }
 
   function processQueue(pos) {
+    const animDuration = 250;
     const container = containers[pos];
     const queue = queues[pos];
     if (!container || !queue.length) return;
@@ -170,14 +171,12 @@
 
     container.appendChild(toast);
     const bar = toast.querySelector(".bar");
-    let start,
-      remaining = cfg.duration;
+    let start = cfg.duration;
+    let remaining = cfg.duration;
 
     function close() {
       toast.classList.remove(animIn);
       toast.classList.add(animOut);
-
-      const animDuration = 250;
 
       setTimeout(() => {
         const h = toast.offsetHeight;
