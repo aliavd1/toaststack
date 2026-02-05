@@ -12,54 +12,50 @@
     direction: "ltr", // rtl | ltr
     progressPosition: "auto", // auto | start | end
     type: "info",
-    icons: {},
-    colors: {},
+    icons: {
+      success: `
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20 6L9 17l-5-5" />
+      </svg>`,
+
+      error: `
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10" />
+        <path d="M15 9l-6 6M9 9l6 6" />
+      </svg>`,
+
+      info: `
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10" />
+        <path d="M12 16v-4M12 8h.01" />
+      </svg>`,
+
+      warning: `
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 3l9 16H3l9-16z" />
+        <path d="M12 9v4M12 17h.01" />
+      </svg>`,
+
+      loading: `
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round"
+          class="toast-spinner">
+        <circle cx="12" cy="12" r="10" opacity="0.25" />
+        <path d="M12 2a10 10 0 0 1 10 10" />
+      </svg>`,
+    },
+    colors: {
+      success: "#16a34a",
+      error: "#dc2626",
+      info: "#2563eb",
+      warning: "#ca8a04",
+      loading: "#6b7280",
+    },
     class: "",
-  };
-
-  const icons = {
-    success: `
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-       stroke-linecap="round" stroke-linejoin="round">
-    <path d="M20 6L9 17l-5-5" />
-  </svg>`,
-
-    error: `
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-       stroke-linecap="round" stroke-linejoin="round">
-    <circle cx="12" cy="12" r="10" />
-    <path d="M15 9l-6 6M9 9l6 6" />
-  </svg>`,
-
-    info: `
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-       stroke-linecap="round" stroke-linejoin="round">
-    <circle cx="12" cy="12" r="10" />
-    <path d="M12 16v-4M12 8h.01" />
-  </svg>`,
-
-    warning: `
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-       stroke-linecap="round" stroke-linejoin="round">
-    <path d="M12 3l9 16H3l9-16z" />
-    <path d="M12 9v4M12 17h.01" />
-  </svg>`,
-
-    loading: `
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-       stroke-linecap="round" stroke-linejoin="round"
-       class="toast-spinner">
-    <circle cx="12" cy="12" r="10" opacity="0.25" />
-    <path d="M12 2a10 10 0 0 1 10 10" />
-  </svg>`,
-  };
-
-  const colors = {
-    success: "#16a34a",
-    error: "#dc2626",
-    info: "#2563eb",
-    warning: "#ca8a04",
-    loading: "#6b7280",
   };
 
   const animations = {
@@ -93,8 +89,8 @@
   function createToast(message, cfg) {
     const type = cfg.type;
     const pos = cfg.position || "top-center";
-    const color = cfg.colors[type] || colors[type];
-    const icon = cfg.icons[type] || icons[type];
+    const color = cfg.colors[type];
+    const icon = cfg.icons[type];
     const [animIn] = animations[cfg.animation];
 
     const theme = resolveTheme(cfg.theme);
