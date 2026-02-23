@@ -19,7 +19,7 @@
 
 .toast-container[data-pos*="top"] {
 	top: 16px;
-	flex-direction: column-reverse;
+	flex-direction: column;
 }
 
 .toast-container[data-pos*="bottom"] {
@@ -54,7 +54,7 @@
 	align-items: flex-start;
 	border-radius: var(--toast-radius);
 	box-shadow: var(--toast-shadow);
-	padding: 14px 10px;
+	padding: 12px 10px;
 	position: relative;
 	overflow: hidden;
 	will-change: transform, opacity;
