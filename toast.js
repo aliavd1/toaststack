@@ -101,12 +101,12 @@
           ? "right"
           : "left"
         : cfg.progressPosition === "start"
-        ? dir === "rtl"
-          ? "right"
-          : "left"
-        : dir === "rtl"
-        ? "left"
-        : "right";
+          ? dir === "rtl"
+            ? "right"
+            : "left"
+          : dir === "rtl"
+            ? "left"
+            : "right";
 
     const el = document.createElement("div");
     el.className = `
@@ -115,7 +115,6 @@
       toast-${theme}
       toast-${dir}
       ${cfg.fill ? "toast-fill" : "toast-outline"}
-      ${animIn}
       ${cfg.class}
     `;
     el.style.setProperty("--toast-accent", color);
@@ -156,6 +155,7 @@
 
   function processQueue(pos) {
     const animDuration = 250;
+    const isTop = pos.startsWith("top");
     const container = containers[pos];
     const queue = queues[pos];
     if (!container || !queue.length) return;
@@ -165,7 +165,14 @@
     const toast = createToast(message, cfg);
     const [animIn, animOut] = animations[cfg.animation];
 
-    container.appendChild(toast);
+    if (isTop) {
+      container.insertBefore(toast, container.firstChild);
+    } else {
+      container.appendChild(toast);
+    }
+
+    toast.classList.add(animIn);
+
     const bar = toast.querySelector(".bar");
     let start = cfg.duration;
     let remaining = cfg.duration;
@@ -192,7 +199,7 @@
             toast.remove();
             processQueue(pos);
           },
-          { once: true }
+          { once: true },
         );
       }, animDuration);
     }
