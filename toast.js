@@ -183,7 +183,6 @@
 
       setTimeout(() => {
         const h = toast.offsetHeight;
-        toast.style.transition = `all ${animDuration}ms ease`;
         toast.style.maxHeight = h + "px";
 
         requestAnimationFrame(() => {
