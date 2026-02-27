@@ -165,6 +165,15 @@
     const toast = createToast(message, cfg);
     const [animIn, animOut] = animations[cfg.animation];
 
+    const siblings = Array.from(container.children);
+    const siblingsAnimation = new Map();
+    const siblingsFirstRect = new Map();
+
+    siblings.forEach((el) => {
+      siblingsAnimation.set(el, el.style.animation);
+      siblingsFirstRect.set(el, el.getBoundingClientRect());
+    });
+
     if (isTop) {
       container.insertBefore(toast, container.firstChild);
     } else {
@@ -172,6 +181,29 @@
     }
 
     toast.classList.add(animIn);
+
+    requestAnimationFrame(() => {
+      siblings.forEach((el) => {
+        const firstRect = siblingsFirstRect.get(el);
+        const lastRect = el.getBoundingClientRect();
+
+        const deltaY = firstRect.top - lastRect.top;
+
+        if (!deltaY) return;
+
+        // First
+        el.classList.remove(animIn);
+        el.style.transition = "none";
+        el.style.transform = `translateY(${deltaY}px)`;
+
+        // Force reflow
+        el.getBoundingClientRect();
+
+        // Play
+        el.style.transition = `transform ${animDuration}ms ease`;
+        el.style.transform = "translateY(0)";
+      });
+    });
 
     const bar = toast.querySelector(".bar");
     let start = cfg.duration;
