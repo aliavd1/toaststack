@@ -1,6 +1,6 @@
 (function (global) {
   const defaults = {
-    duration: 3000,
+    delay: 3000,
     position: "top-center",
     animation: "slide", // slide | fade | scale | bounce
     maxVisible: Infinity,
@@ -215,8 +215,8 @@
     }
 
     const bar = toast.querySelector(".bar");
-    let start = cfg.duration;
-    let remaining = cfg.duration;
+    let start = cfg.delay;
+    let remaining = cfg.delay;
 
     function close() {
       toast.classList.remove(animIn);
@@ -257,12 +257,12 @@
       clearTimeout(toast._timer);
       remaining -= Date.now() - start;
       if (bar) {
-        const percent = (remaining / cfg.duration) * 100;
+        const percent = (remaining / cfg.delay) * 100;
         bar.style.transition = "none";
         bar.style.width = percent + "%";
       }
     }
-
+  
     toast.addEventListener("mouseenter", pauseTimer);
     toast.addEventListener("mouseleave", startTimer);
     toast.querySelector(".close")?.addEventListener("click", close);
