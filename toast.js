@@ -154,7 +154,7 @@
   }
 
   function processQueue(pos) {
-    const animDuration = 250;
+    const queueAnimDuration = 250;
     const isTop = pos.startsWith("top");
     const container = containers[pos];
     const queue = queues[pos];
@@ -180,30 +180,34 @@
       container.appendChild(toast);
     }
 
-    toast.classList.add(animIn);
+    if (container.children.length === 1) {
+      toast.classList.add(animIn);
+    } else {
+      toast.classList.add(animIn);
 
-    requestAnimationFrame(() => {
-      siblings.forEach((el) => {
-        const firstRect = siblingsFirstRect.get(el);
-        const lastRect = el.getBoundingClientRect();
+      requestAnimationFrame(() => {
+        siblings.forEach((el) => {
+          const firstRect = siblingsFirstRect.get(el);
+          const lastRect = el.getBoundingClientRect();
 
-        const deltaY = firstRect.top - lastRect.top;
+          const deltaY = firstRect.top - lastRect.top;
 
-        if (!deltaY) return;
+          if (!deltaY) return;
 
-        // First
-        el.classList.remove(animIn);
-        el.style.transition = "none";
-        el.style.transform = `translateY(${deltaY}px)`;
+          // First
+          el.classList.remove(animIn);
+          el.style.transition = "none";
+          el.style.transform = `translateY(${deltaY}px)`;
 
-        // Force reflow
-        el.getBoundingClientRect();
+          // Force reflow
+          el.getBoundingClientRect();
 
-        // Play
-        el.style.transition = `transform ${animDuration}ms ease`;
-        el.style.transform = "translateY(0)";
+          // Play
+          el.style.transition = `transform ${queueAnimDuration}ms ease`;
+          el.style.transform = "translateY(0)";
+        });
       });
-    });
+    }
 
     const bar = toast.querySelector(".bar");
     let start = cfg.duration;
@@ -221,7 +225,7 @@
           toast.style.maxHeight = "0";
           toast.style.margin = "0";
           toast.style.padding = "0";
-          toast.style.transition = `all ${animDuration}ms ease`;
+          toast.style.transition = `all ${queueAnimDuration}ms ease`;
         });
 
         toast.addEventListener(
@@ -232,7 +236,7 @@
           },
           { once: true },
         );
-      }, animDuration);
+      }, queueAnimDuration);
     }
 
     function startTimer() {
