@@ -143,8 +143,13 @@
     return el;
   }
 
+  function updateConfig(cfg) {
+    if (cfg.fill) cfg.border = false
+    return cfg
+  }
+
   function show(message, opts = {}) {
-    const cfg = { ...defaults, ...opts };
+    const cfg = updateConfig({ ...defaults, ...opts });
     const pos = cfg.position;
     const container = getContainer(pos);
     const queue = queues[pos];
