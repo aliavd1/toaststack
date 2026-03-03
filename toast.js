@@ -144,8 +144,8 @@
   }
 
   function updateConfig(cfg) {
-    if (cfg.fill) cfg.border = false
-    return cfg
+    if (cfg.fill) cfg.border = false;
+    return cfg;
   }
 
   function show(message, opts = {}) {
@@ -262,7 +262,7 @@
         bar.style.width = percent + "%";
       }
     }
-  
+
     toast.addEventListener("mouseenter", pauseTimer);
     toast.addEventListener("mouseleave", startTimer);
     toast.querySelector(".close")?.addEventListener("click", close);
