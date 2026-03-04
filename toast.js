@@ -67,6 +67,8 @@
 
   const containers = {};
   const queues = {};
+  const queueAnimDuration = 250;
+  document.documentElement.style.setProperty("--toast-animation-duration", `${queueAnimDuration}ms`);
 
   function getContainer(pos) {
     if (containers[pos]) return containers[pos];
@@ -159,7 +161,6 @@
   }
 
   function processQueue(pos) {
-    const queueAnimDuration = 250;
     const isTop = pos.startsWith("top");
     const container = containers[pos];
     const queue = queues[pos];
