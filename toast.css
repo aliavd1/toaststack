@@ -6,7 +6,7 @@
 	--toast-bg-dark: #1f2937;
 	--toast-text-light: #111;
 	--toast-text-dark: #f9fafb;
-	--toast-animation-duration: .25s;
+	--toast-animation-duration: 250ms;
 }
 
 /* Toast core */
